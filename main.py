@@ -1,24 +1,25 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 import cv2
 import pickle
-from imutils.video import VideoStream
 from imutils import face_utils
 import dlib
+import warnings
+warnings.filterwarnings('ignore')
 
-#Program for testing main function
+class main:
+    def __init__(img):
+        return motion(img)
+
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
-vs = VideoStream().start()
 loaded_model = pickle.load(open('gaze_model.sav', 'rb'))
 
-while True:
-    frame = vs.read()
-    frame = cv2.flip(frame,1)
+def motion(frame):
     gray = frame
-    # print gray
+
     detected_faces = detector(gray, 1)
     for i, face_rect in enumerate(detected_faces):
         # Get the the face's pose
@@ -29,8 +30,6 @@ while True:
         print "Eyes Detected"
         LE = cv2.resize(LE,(53,23))
         RE = cv2.resize(RE,(53,23))
-        # cv2.imwrite('al.jpg',PE)
-        # cv2.imwrite('ar.jpg',QE)
         LEa = LE.reshape(1,3657)
         LEb = LEa.ravel()
         LEz = ','.join([str(i) for i in LEb])
@@ -44,7 +43,5 @@ while True:
         f.close()
         pre = pd.read_csv('img.csv')
         result = loaded_model.predict(pre)
-        print(result)
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord("q"):
-            break
+        # print(result)
+        return int(result)
