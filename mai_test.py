@@ -28,7 +28,6 @@ while True:
         pose_landmarks = face_utils.shape_to_np(pose_landmarks)
         LE = gray[pose_landmarks[37][1]-3:pose_landmarks[40][1]+3,pose_landmarks[36][0]-3:pose_landmarks[39][0]+3]
         RE = gray[pose_landmarks[43][1]-3:pose_landmarks[47][1]+3,pose_landmarks[42][0]-3:pose_landmarks[45][0]+3]
-        print "Eyes Detected"
         LE = cv2.resize(LE,(53,23))
         RE = cv2.resize(RE,(53,23))
         # cv2.imwrite('al.jpg',PE)
