@@ -7,13 +7,15 @@ import pickle
 from imutils.video import VideoStream
 from imutils import face_utils
 import dlib
+import warnings
+warnings.filterwarnings('ignore')
 
 #Program for testing main function
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 vs = VideoStream().start()
 loaded_model = pickle.load(open('gaze_model.sav', 'rb'))
-
+print "Model Loaded,Detection starting"
 while True:
     frame = vs.read()
     frame = cv2.flip(frame,1)
@@ -44,7 +46,11 @@ while True:
         f.close()
         pre = pd.read_csv('img.csv')
         result = loaded_model.predict(pre)
-        print(result)
-        key = cv2.waitKey(1) & 0xFF
-        if key == ord("q"):
-            break
+        if(result == [0]):
+            print "Left"
+        if(result == [1]):
+            print "Straight"
+        if(result == [2]):
+            print "Right"
+        if(result == [3]):
+            print "Eyes Closed"
