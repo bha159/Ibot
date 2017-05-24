@@ -15,6 +15,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 vs = VideoStream().start()
 loaded_model = pickle.load(open('gaze_model.sav', 'rb'))
+face_cascade = cv2.CascadeClassifier('haar_face.xml')
 print "Model Loaded,Detection starting"
 while True:
     frame = vs.read()
@@ -30,6 +31,7 @@ while True:
         RE = gray[pose_landmarks[43][1]-3:pose_landmarks[47][1]+3,pose_landmarks[42][0]-3:pose_landmarks[45][0]+3]
         LE = cv2.resize(LE,(53,23))
         RE = cv2.resize(RE,(53,23))
+        temp = np.zeros([23,106,3])
         # cv2.imwrite('al.jpg',PE)
         # cv2.imwrite('ar.jpg',QE)
         LEa = LE.reshape(1,3657)
