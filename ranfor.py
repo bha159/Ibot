@@ -19,10 +19,6 @@ print train.shape
 print labs.shape
 
 clf = RandomForestClassifier()
-clf_ = svm.SVC(C=1.0, kernel='rbf', degree=3, gamma='auto', coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape=None)
-# pca = PCA(n_components = 3 )
-# pca.fit(train)
-# tran_data =pca.transform(train)
 trainx,testx,trainy,testy = train_test_split(train,labs,train_size = 0.6,random_state =1)
 clf.fit(trainx,trainy)
 print(clf.score(testx,testy))
