@@ -47,5 +47,5 @@ For training do python ranfor.py
 To detect motion of pupil either use mai_test.py or send data to flask server and get movement data.
 
 ## Authors
-* **Bharat Kumar** - ratcoder(https://github.com/ratcoder)
+* **Bharat Kumar** - bha159(https://github.com/bha159)
 
