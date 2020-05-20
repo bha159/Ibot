@@ -32,7 +32,7 @@ Flask-DebugToolbar==0.10.1
 funcsigs==1.0.2
 functools32==3.2.3.post2
 html5lib==0.999999999
-httplib2==0.9.1
+httplib2==0.18.0
 idna==2.0
 imutils==0.4.3
 ipaddress==1.0.16
