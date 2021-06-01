@@ -124,7 +124,7 @@ traitlets==4.3.2
 Twisted==16.0.0
 ubuntuone-client-data==14.4
 unity-lens-photos==1.0
-urllib3==1.13.1
+urllib3==1.26.5
 variety==0.6.4
 variety-slideshow==0.1
 virtualenv==15.1.0
