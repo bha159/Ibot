@@ -121,7 +121,7 @@ terminado==0.6
 testpath==0.3
 tornado==4.2.1
 traitlets==4.3.2
-Twisted==16.0.0
+Twisted==22.4.0
 ubuntuone-client-data==14.4
 unity-lens-photos==1.0
 urllib3==1.13.1
